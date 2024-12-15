@@ -19,14 +19,12 @@ export const isPlatinum = (count: number) => count >= PLATINUM_MIN && count < GO
 export const isGodLike = (count: number) => count >= GOD_LIKE_MIN;
 
 export const getUsersBadge = async (user: User): Promise<Icon | null> => {
-/*
- * The sequential invocation of the `getUsersBadge` function
- * significantly degrades performance when called repeatedly
- * in a blocking manner.
- *
- * Each call waits for the previous one to complete, causing
- * the overall execution time to grow linearly with the number of calls.
- */
+  /*
+   * The sequential invocation of the `getUsersBadge` function
+   * significantly impacts performance when called repeatedly
+   * in a blocking manner. Additionally, excessive simultaneous calls
+   * lead to crashes due to (simulated) resource exhaustion.
+   */
   await emulateLongProcess();
 
   switch (true) {
