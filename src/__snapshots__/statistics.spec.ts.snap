@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`calculateUsersStatistics should calculate statistics for five users 1`] = `
+{
+  "averageSolutionCount": 2191.8,
+  "mostGivenBadge": "badge_god_like",
+  "topFiveUsers": [
+    {
+      "badge": "badge_god_like",
+      "id": "___",
+      "solutionCount": 5000,
+      "username": "___",
+    },
+    {
+      "badge": "badge_god_like",
+      "id": "___",
+      "solutionCount": 4500,
+      "username": "___",
+    },
+    {
+      "badge": "badge_platinum",
+      "id": "___",
+      "solutionCount": 1400,
+      "username": "___",
+    },
+    {
+      "badge": "badge_gold",
+      "id": "___",
+      "solutionCount": 55,
+      "username": "___",
+    },
+    {
+      "badge": "badge_starter",
+      "id": "___",
+      "solutionCount": 4,
+      "username": "___",
+    },
+  ],
+  "usersCount": 5,
+}
+`;
+
+exports[`calculateUsersStatistics should calculate statistics for more than five users 1`] = `
+{
+  "averageSolutionCount": 4405.9,
+  "mostGivenBadge": "badge_platinum",
+  "topFiveUsers": [
+    {
+      "badge": "badge_god_like",
+      "id": "___",
+      "solutionCount": 20000,
+      "username": "___",
+    },
+    {
+      "badge": "badge_god_like",
+      "id": "___",
+      "solutionCount": 10000,
+      "username": "___",
+    },
+    {
+      "badge": "badge_god_like",
+      "id": "___",
+      "solutionCount": 5000,
+      "username": "___",
+    },
+    {
+      "badge": "badge_god_like",
+      "id": "___",
+      "solutionCount": 4500,
+      "username": "___",
+    },
+    {
+      "badge": "badge_platinum",
+      "id": "___",
+      "solutionCount": 2000,
+      "username": "___",
+    },
+  ],
+  "usersCount": 10,
+}
+`;
+
+exports[`calculateUsersStatistics should calculate statistics for one user 1`] = `
+{
+  "averageSolutionCount": 55,
+  "mostGivenBadge": "badge_gold",
+  "topFiveUsers": [
+    {
+      "badge": "badge_gold",
+      "id": "___",
+      "solutionCount": 55,
+      "username": "___",
+    },
+  ],
+  "usersCount": 1,
+}
+`;
+
+exports[`calculateUsersStatistics should calculate statistics for zero users 1`] = `
+{
+  "averageSolutionCount": 0,
+  "mostGivenBadge": "badge_starter",
+  "topFiveUsers": [],
+  "usersCount": 0,
+}
+`;
