@@ -1,5 +1,6 @@
 import { User } from './types/user.interface';
 import { Icon } from './types/icon.enum';
+import { emulateLongProcess } from './emulate-long-process';
 
 export const BAD_ASS_MAX = -1;
 export const STARTER_MIN = 1;
@@ -18,6 +19,16 @@ export const isPlatinum = (count: number) => count >= PLATINUM_MIN && count < GO
 export const isGodLike = (count: number) => count >= GOD_LIKE_MIN;
 
 export const getUsersBadge = async (user: User): Promise<Icon | null> => {
+/*
+ * The sequential invocation of the `getUsersBadge` function
+ * significantly degrades performance when called repeatedly
+ * in a blocking manner.
+ *
+ * Each call waits for the previous one to complete, causing
+ * the overall execution time to grow linearly with the number of calls.
+ */
+  await emulateLongProcess();
+
   switch (true) {
   case isStarter(user.solutionCount):
     return Icon.BADGE_STARTER;

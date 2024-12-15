@@ -4,21 +4,26 @@ import { UserWithBadge } from './types/user-with-badge.interface';
 import { getUsersBadge } from './badge-helpers';
 
 export const getAllUser = async (): Promise<User[]> => {
-  const userCount = getRandomInt(5000);
+  const userCount =  getRandomInt(5000);
   return Array.from(Array(userCount), () => generateUser());
 };
 
 export const getAllUsersWithBadge = async (): Promise<ReadonlyArray<UserWithBadge>> => {
-  const usersWithBadge: Array<UserWithBadge> = [];
+  const allUsers = await getAllUser();
 
-  for (const user of await getAllUser()) {
-    usersWithBadge.push({
-      ...user,
-      badge: await getUsersBadge(user),
-    });
-  }
-
-  return usersWithBadge;
+  /*
+   * Promise.all helps to execute getUsersBadge asynchronously (non-blocking),
+   * reducing the overall execution time to that of the longest call.
+   */
+  return await Promise.all(
+    allUsers.map(async (user) => {
+      const badge = await getUsersBadge(user);
+      return {
+        ...user,
+        badge,
+      };
+    }),
+  );
 };
 
 const generateUser = (): User => {

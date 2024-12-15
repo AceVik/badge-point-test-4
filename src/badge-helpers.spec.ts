@@ -1,8 +1,17 @@
 import { getUsersBadge } from './badge-helpers';
 import { Icon } from './types/icon.enum';
 import { getUserMock } from './test-helpers/user-helpers';
+import { emulateLongProcess } from './emulate-long-process';
+
+jest.mock('./emulate-long-process');
+
+const emulateLongProcessMock = emulateLongProcess as jest.Mock;
 
 describe('getUsersBadge', () => {
+  beforeAll(() => {
+    emulateLongProcessMock.mockResolvedValue(undefined);
+  });
+
   it('get God Like', async function () {
     expect(await getUsersBadge(getUserMock(2001))).toEqual(Icon.BADGE_GOD_LIKE);
     expect(await getUsersBadge(getUserMock(10000000000))).toEqual(Icon.BADGE_GOD_LIKE);
