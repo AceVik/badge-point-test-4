@@ -1,4 +1,4 @@
-const DEBUG = false;
+const DEBUG = process.env.DEBUG === 'true';
 
 export const createQueue = <T>(concurrency: number) => {
   let activeCount = 0;

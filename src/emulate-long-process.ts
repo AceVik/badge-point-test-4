@@ -4,7 +4,7 @@ let stackCount = 0;
 const stackLimit = 20;
 
 export async function emulateLongProcess(): Promise<void> {
-  stackCount++
+  stackCount++;
 
   if(stackCount > stackLimit) {
     throw Error('stack overflow');
@@ -13,7 +13,7 @@ export async function emulateLongProcess(): Promise<void> {
   return new Promise((resolve) => {
     setTimeout(() => {
       stackCount--;
-      resolve()
+      resolve();
     }, second * 1000);
   });
 }

@@ -68,11 +68,6 @@ describe('createQueue', () => {
     expect(results).toEqual([1, 3]);
   });
 
-  it('should process no tasks if queue is empty', async () => {
-    const queue = createQueue<number>(2);
-    expect(await Promise.all([])).toEqual([]);
-  });
-
   it('should not exceed concurrency limit', async () => {
     const queue = createQueue<number>(3);
     let activeTasks = 0;
